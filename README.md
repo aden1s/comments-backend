@@ -21,11 +21,19 @@ API для работы с комментариями. Добавление, у�
 Основные функции
 ----------------
 
-Добавление комментария первого уровня для сущности 3/3:
+Добавление комментария первого уровня для сущности 3/3 [POST]:
 ```python 
+from django.urls import reverse
 
 from rest_framework.test import APIClient
 
 data = {'entity_id': 3, "entity_type": 3, "comment": "Comment level INIT", "user": 1}
 client.post('/create/', data, format="json")
 ```
+Изменение комментария по ID [PUT]:
+```python
+url = reverse('comment-item', kwargs={"pk": 1})
+response = client.put(url, {"comment":"Changed comment"}, format='json')
+```
+
+
