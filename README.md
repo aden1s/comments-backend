@@ -45,5 +45,14 @@ response = client.put(url, {"comment":"Changed comment"}, format='json')
 url = reverse('child', kwargs={"pk": pk})
 response = client.get(url, format='json')
 ```
+Удаление комментария по идентификатору:
+```python
+url = reverse('comment-item', kwargs={"pk": pk})
+response = self.client.delete(url, format='json')
+```
+В случае, если комментарий имеет вложенные комментарии в response будет статус 400 и сообщение с просьбой удалить вложенные комментарии.
+
+
+
 
 
